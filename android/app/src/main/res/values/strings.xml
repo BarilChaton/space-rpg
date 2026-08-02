@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Cradle Sector</string>
+    <string name="title_activity_main">Cradle Sector</string>
+    <string name="package_name">com.cradlesectorrpg.app</string>
+    <string name="custom_url_scheme">com.cradlesectorrpg.app</string>
+</resources>
