@@ -28,7 +28,7 @@ function Scene() {
 
       <Starfield seed={4812} backgroundCount={7000} mediumCount={1000} brightCount={110} />
 
-      <Sun position={[-0.85, 2.15, -1.7]} intensity={4.2} />
+      <Sun position={[-0.85, 3.4, -1.7]} intensity={4.2} />
 
       <Planet position={[3.45, -1.5, 0]} radius={3.4} rotationSpeed={0.012} />
     </Canvas>
