@@ -1,9 +1,7 @@
+import MainMenu from './pages/mainMenu'
+
 function App() {
-  return (
-    <div>
-      <h1>LMAO</h1>
-    </div>
-  )
+  return <MainMenu />
 }
 
 export default App
