@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../auth/authContext'
 import { signInWithGoogle, signOut } from '../../auth/authService'
 
@@ -13,6 +13,8 @@ const MenuButtons = () => {
   const { user, loading, isAuthenticated } = useAuth()
   const [authLoading, setAuthLoading] = useState(false)
   const [error, setError] = useState('')
+
+  const navigate = useNavigate()
 
   async function handleSignIn() {
     try {
@@ -54,10 +56,10 @@ const MenuButtons = () => {
       <nav className="flex w-full flex-col gap-4 landscape:max-w-xs landscape:gap-2">
         {isAuthenticated ? (
           <>
-            <button className={primaryButtonClass}>Create Commander</button>
-
+            <button className={primaryButtonClass} onClick={() => navigate('/commander/new')}>
+              Create Commander
+            </button>
             <button className={secondaryButtonClass}>Settings</button>
-
             <button className={secondaryButtonClass} disabled={authLoading} onClick={handleSignOut}>
               {authLoading ? 'Signing Out...' : 'Sign Out'}
             </button>
