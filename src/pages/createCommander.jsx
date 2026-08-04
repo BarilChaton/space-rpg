@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/authContext'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
+import { createCommander } from '../services/commanderService'
+import { useCommander } from '../commander/commanderContext'
 import Scene from '../components/three/scene'
 
 const portraits = [
@@ -14,10 +16,12 @@ const portraits = [
 const CreateCommander = () => {
   const navigate = useNavigate()
   const { isAuthenticated, loading } = useAuth()
+  const { commander, loading: commanderLoading, setCommander } = useCommander()
 
   const [name, setName] = useState('')
   const [portraitIndex, setPortraitIndex] = useState(0)
   const [error, setError] = useState('')
+  const [creatingCommander, setCreatingCommander] = useState(false)
 
   const selectedPortrait = useMemo(() => portraits[portraitIndex], [portraitIndex])
 
@@ -29,7 +33,7 @@ const CreateCommander = () => {
     setPortraitIndex((current) => (current === portraits.length - 1 ? 0 : current + 1))
   }
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
     event.preventDefault()
 
     const commanderName = name.trim()
@@ -44,18 +48,29 @@ const CreateCommander = () => {
       return
     }
 
-    setError('')
+    try {
+      setCreatingCommander(true)
+      setError('')
 
-    const commander = {
-      name: commanderName,
-      portrait: selectedPortrait.id
+      const createdCommander = await createCommander({
+        name: commanderName,
+        portrait: selectedPortrait.id
+      })
+
+      setCommander(createdCommander)
+      navigate('/', { replace: true })
+    } catch (error) {
+      console.error(error)
+
+      setError(error.message)
+    } finally {
+      setCreatingCommander(false)
     }
-
-    console.log('Commander ready to create:', commander)
   }
 
-  if (loading) return null
+  if (loading || commanderLoading) return null
   if (!isAuthenticated) return <Navigate to="/" replace />
+  if (commander) return <Navigate to="/" replace />
 
   return (
     <main className="relative h-dvh overflow-hidden bg-black text-white">
@@ -145,9 +160,10 @@ const CreateCommander = () => {
               )}
 
               <button
-                className="rounded-xl border border-cyan-400/40 bg-cyan-500/20 px-6 py-4 text-lg font-semibold transition hover:bg-cyan-500/30 active:scale-[0.98] landscape:py-2.5 landscape:text-base"
+                className="rounded-xl border border-cyan-400/40 bg-cyan-500/20 px-6 py-4 text-lg font-semibold transition hover:bg-cyan-500/30 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 landscape:py-2.5 landscape:text-base"
+                disabled={creatingCommander}
                 type="submit">
-                Begin Journey
+                {creatingCommander ? 'Creating Commander...' : 'Begin Journey'}
               </button>
             </form>
           </div>
