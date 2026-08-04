@@ -9,7 +9,7 @@ const primaryButtonClass =
 const secondaryButtonClass =
   'rounded-xl border border-white/20 bg-white/10 px-6 py-4 text-lg font-semibold backdrop-blur-md transition hover:bg-white/20 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 landscape:py-3'
 
-function MenuButtons() {
+const MenuButtons = () => {
   const { user, loading, isAuthenticated } = useAuth()
   const [authLoading, setAuthLoading] = useState(false)
   const [error, setError] = useState('')

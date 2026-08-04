@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useLayoutEffect, useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { AdditiveBlending, BufferAttribute, BufferGeometry } from 'three'
 import { createSeededRandom, getRandomSpherePosition, getRandomStarColor } from './utils'
@@ -33,7 +33,7 @@ function StarLayer({ seed, count, minRadius, maxRadius, size, opacity, colorVari
     return starGeometry
   }, [seed, count, minRadius, maxRadius, colorVariation])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     return () => geometry.dispose()
   }, [geometry])
 

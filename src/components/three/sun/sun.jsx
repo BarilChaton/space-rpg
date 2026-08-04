@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useLayoutEffect, useMemo, useRef } from 'react'
 import { AdditiveBlending, CanvasTexture, Color, SRGBColorSpace } from 'three'
 import { Lensflare, LensflareElement } from 'three/addons/objects/Lensflare.js'
 
@@ -50,7 +50,7 @@ function Sun({ position = [0.45, 1.3, -1.8], intensity = 7 }) {
     })
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const light = lightRef.current
 
     if (!light) return
@@ -73,7 +73,7 @@ function Sun({ position = [0.45, 1.3, -1.8], intensity = 7 }) {
     }
   }, [coreTexture, flareTexture])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     return () => {
       coreTexture.dispose()
       flareTexture.dispose()

@@ -1,4 +1,4 @@
-function MenuTitle() {
+const MenuTitle = () => {
   return (
     <header className="mb-10 text-left landscape:mb-4">
       <p className="mb-3 text-sm uppercase tracking-[0.4em] text-cyan-300 landscape:mb-2 landscape:text-[10px]">

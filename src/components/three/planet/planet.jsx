@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useLayoutEffect, useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { createPlanetTexture } from './utils'
 
@@ -22,7 +22,7 @@ function Planet({ seed = 2468, position = [3.2, -1.35, 0], radius = 3.25, rotati
     }
   })
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     return () => {
       planetTexture.dispose()
     }
