@@ -14,33 +14,40 @@ const MenuButtons = () => {
   const { user, loading, isAuthenticated } = useAuth()
   const { commander, loading: commanderLoading, hasCommander } = useCommander()
 
-  const [authLoading, setAuthLoading] = useState(false)
+  const [authAction, setAuthAction] = useState(null)
+
+  const isSigningIn = authAction === 'sign-in'
+  const isSigningOut = authAction === 'sign-out'
+
   const [error, setError] = useState('')
 
   const navigate = useNavigate()
 
   async function handleSignIn() {
     try {
-      setAuthLoading(true)
+      setAuthAction('sign-in')
       setError('')
+
       await signInWithGoogle()
     } catch (signInError) {
       console.error(signInError)
       setError('Unable to sign in with Google.')
-      setAuthLoading(false)
+    } finally {
+      setAuthAction(null)
     }
   }
 
   async function handleSignOut() {
     try {
-      setAuthLoading(true)
+      setAuthAction('sign-out')
       setError('')
+
       await signOut()
     } catch (signOutError) {
       console.error(signOutError)
       setError('Unable to sign out.')
     } finally {
-      setAuthLoading(false)
+      setAuthAction(null)
     }
   }
 
@@ -71,14 +78,14 @@ const MenuButtons = () => {
             )}
 
             <button className={secondaryButtonClass}>Settings</button>
-            <button className={secondaryButtonClass} disabled={authLoading} onClick={handleSignOut}>
-              {authLoading ? 'Signing Out...' : 'Sign Out'}
+            <button className={secondaryButtonClass} disabled={isSigningOut} onClick={handleSignOut}>
+              {isSigningOut ? 'Signing Out...' : 'Sign Out'}
             </button>
           </>
         ) : (
           <>
-            <button className={primaryButtonClass} disabled={authLoading} onClick={handleSignIn}>
-              {authLoading ? 'Opening Google...' : 'Sign In with Google'}
+            <button className={primaryButtonClass} disabled={isSigningIn} onClick={handleSignIn}>
+              {isSigningIn ? 'Opening Google...' : 'Sign In with Google'}
             </button>
             <button className={secondaryButtonClass}>Settings</button>
           </>
