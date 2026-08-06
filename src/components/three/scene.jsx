@@ -1,19 +1,10 @@
 import { Canvas } from '@react-three/fiber'
-import { useEffect } from 'react'
 
 import Planet from './planet/planet'
 import Starfield from './stars/starfield'
 import Sun from './sun/sun'
 
 function SceneContent({ mode, transition }) {
-  useEffect(() => {
-    console.log('Scene mounted')
-
-    return () => {
-      console.log('Scene unmounted')
-    }
-  }, [])
-
   return (
     <>
       <color attach="background" args={['#02030a']} />
