@@ -68,7 +68,9 @@ const MenuButtons = () => {
           <>
             {hasCommander ? (
               <>
-                <button className={primaryButtonClass}>Continue</button>
+                <button className={primaryButtonClass} onClick={() => navigate('/game/station')}>
+                  Continue
+                </button>
                 <button className={secondaryButtonClass}>Commander</button>
               </>
             ) : (
