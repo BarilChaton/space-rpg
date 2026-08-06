@@ -4,7 +4,6 @@ import { useAuth } from '../auth/authContext'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { createCommander } from '../services/commanderService'
 import { useCommander } from '../commander/commanderContext'
-import Scene from '../components/three/scene'
 
 const portraits = [
   { id: 'commander-01', label: 'Commander 01', initials: 'C1' },
@@ -73,15 +72,11 @@ const CreateCommander = () => {
   if (commander) return <Navigate to="/" replace />
 
   return (
-    <main className="relative h-dvh overflow-hidden bg-black text-white">
-      <div className="absolute inset-0">
-        <Scene />
-      </div>
-
-      <div className="absolute inset-0 bg-black/45" />
+    <main className="relative h-dvh overflow-hidden text-white">
+      <div className="absolute inset-0 bg-black/25" />
 
       <div className="relative z-10 flex h-dvh items-center justify-center px-5 py-5 landscape:px-8 landscape:py-3">
-        <section className="relative w-full max-w-md rounded-2xl border border-white/15 bg-[#07101d]/85 p-6 shadow-2xl backdrop-blur-xl landscape:h-[calc(100dvh-1.5rem)] landscape:max-h-107.5 landscape:max-w-5xl landscape:p-5">
+        <section className="relative w-full max-w-md rounded-2xl border border-cyan-200/15 bg-[#07101d]/45 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.4),inset_0_1px_rgba(255,255,255,0.05)] backdrop-blur-2xl landscape:h-[calc(100dvh-1.5rem)] landscape:max-h-107.5 landscape:max-w-5xl landscape:p-5">
           <button
             className="mb-6 text-sm uppercase tracking-[0.2em] text-white/60 transition hover:text-white landscape:absolute landscape:left-5 landscape:top-4 landscape:mb-0 landscape:text-xs"
             onClick={() => navigate('/')}>
@@ -109,7 +104,7 @@ const CreateCommander = () => {
 
                 <input
                   id="commander-name"
-                  className="w-full rounded-xl border border-white/15 bg-black/35 px-4 py-3 text-lg outline-none transition placeholder:text-white/25 focus:border-cyan-400/70 focus:ring-2 focus:ring-cyan-400/15 landscape:py-2.5 landscape:text-base"
+                  className="w-full rounded-xl border border-white/15 bg-black/20 px-4 py-3 text-lg outline-none transition placeholder:text-white/25 focus:border-cyan-400/70 focus:ring-2 focus:ring-cyan-400/15 landscape:py-2.5 landscape:text-base"
                   maxLength={24}
                   placeholder="Enter commander name"
                   value={name}
@@ -137,7 +132,7 @@ const CreateCommander = () => {
                   </button>
 
                   <div className="flex flex-1 flex-col items-center">
-                    <div className="flex aspect-square w-32 items-center justify-center rounded-full border border-cyan-400/35 bg-linear-to-br from-cyan-500/25 to-blue-950/70 text-3xl font-bold tracking-[0.15em] shadow-[0_0_40px_rgba(34,211,238,0.15)] landscape:w-24 landscape:text-2xl">
+                    <div className="flex aspect-square w-32 items-center justify-center rounded-full border border-cyan-300/30 bg-linear-to-br from-cyan-400/15 to-blue-950/30 text-3xl font-bold tracking-[0.15em] shadow-[0_0_40px_rgba(34,211,238,0.12)] backdrop-blur-md landscape:w-24 landscape:text-2xl">
                       {selectedPortrait.initials}
                     </div>
 

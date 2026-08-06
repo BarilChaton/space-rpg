@@ -1,19 +1,17 @@
 import { Navigate, useNavigate } from 'react-router-dom'
 import { FiBriefcase, FiCompass, FiSettings, FiShoppingCart, FiUser } from 'react-icons/fi'
-
 import { useAuth } from '../auth/authContext'
 import { useCommander } from '../commander/commanderContext'
-import Scene from '../components/three/scene'
 import { getStarSystem } from '../data/starSystems'
 import { getStation } from '../data/stations'
 
 const serviceButtonClass =
-  'flex min-h-20 w-full items-center gap-4 rounded-xl border border-white/15 bg-[#07101d]/80 px-4 py-3 text-left backdrop-blur-md transition hover:border-cyan-400/40 hover:bg-cyan-500/10 active:scale-[0.98] disabled:cursor-default disabled:opacity-70 landscape:min-h-18 landscape:px-4 landscape:py-3'
+  'flex min-h-20 w-full items-center gap-4 rounded-xl border border-white/12 bg-[#07101d]/35 px-4 py-3 text-left shadow-[inset_0_1px_rgba(255,255,255,0.04)] backdrop-blur-xl transition hover:border-cyan-300/35 hover:bg-cyan-500/8 active:scale-[0.98] disabled:cursor-default disabled:opacity-75 landscape:min-h-18 landscape:px-4 landscape:py-3'
 
 function StationServiceButton({ icon: Icon, title, description, disabled = false, onClick }) {
   return (
     <button className={serviceButtonClass} disabled={disabled} type="button" onClick={onClick}>
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-cyan-400/20 bg-cyan-500/10 text-xl text-cyan-200 landscape:h-10 landscape:w-10">
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-cyan-400/20 bg-cyan-500/8 text-xl text-cyan-200 landscape:h-10 landscape:w-10">
         <Icon />
       </span>
 
@@ -55,13 +53,9 @@ function StationHub() {
   }
 
   return (
-    <main className="relative h-dvh overflow-hidden bg-black text-white">
-      <div className="absolute inset-0">
-        <Scene />
-      </div>
-
-      <div className="absolute inset-0 bg-[#020712]/65" />
-      <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-transparent" />
+    <main className="relative h-dvh overflow-hidden text-white">
+      <div className="absolute inset-0 bg-[#020712]/30" />
+      <div className="absolute inset-0 bg-linear-to-r from-black/55 via-black/20 to-transparent" />
 
       <div className="relative z-10 flex h-full flex-col px-5 pb-5 pt-5 landscape:px-8 landscape:pb-4 landscape:pt-4">
         <header className="flex shrink-0 items-start justify-between gap-4">
@@ -78,7 +72,7 @@ function StationHub() {
           </div>
 
           <button
-            className="shrink-0 rounded-lg border border-white/15 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.15em] text-white/60 backdrop-blur-md transition hover:bg-white/10 hover:text-white"
+            className="shrink-0 rounded-lg border border-white/15 bg-black/15 px-4 py-2 text-xs uppercase tracking-[0.15em] text-white/60 backdrop-blur-md transition hover:bg-white/10 hover:text-white"
             onClick={() => navigate('/')}>
             Main Menu
           </button>
@@ -86,19 +80,19 @@ function StationHub() {
 
         <div className="hide-scrollbar mt-5 min-h-0 flex-1 overflow-y-auto overscroll-contain pr-1 landscape:mt-4">
           <div className="grid gap-5 pb-2 landscape:grid-cols-[0.9fr_1.1fr] landscape:items-start landscape:gap-8">
-            <section className="rounded-2xl border border-white/10 bg-[#07101d]/75 p-5 backdrop-blur-xl landscape:p-6">
+            <section className="rounded-2xl border border-cyan-200/12 bg-[#07101d]/35 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.3),inset_0_1px_rgba(255,255,255,0.04)] backdrop-blur-2xl landscape:p-6">
               <p className="text-xs uppercase tracking-[0.25em] text-white/40">Docking report</p>
 
               <p className="mt-4 text-sm leading-7 text-white/65 landscape:text-base">{station.description}</p>
 
               <div className="mt-6 grid grid-cols-2 gap-3">
-                <div className="min-w-0 rounded-xl border border-white/10 bg-black/25 p-4">
+                <div className="min-w-0 rounded-xl border border-white/10 bg-black/15 p-4">
                   <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">Commander</p>
 
                   <p className="mt-2 truncate font-semibold">{commander.name}</p>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-black/25 p-4">
+                <div className="rounded-xl border border-white/10 bg-black/15 p-4">
                   <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">Credits</p>
 
                   <p className="mt-2 font-semibold text-cyan-200">{commander.credits.toLocaleString()}</p>

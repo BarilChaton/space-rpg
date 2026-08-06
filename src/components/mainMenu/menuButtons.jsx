@@ -5,10 +5,10 @@ import { signInWithGoogle, signOut } from '../../auth/authService'
 import { useCommander } from '../../commander/commanderContext'
 
 const primaryButtonClass =
-  'rounded-xl border border-cyan-400/40 bg-cyan-500/15 px-6 py-4 text-lg font-semibold backdrop-blur-md transition hover:bg-cyan-500/25 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 landscape:py-2.5 landscape:text-base'
+  'rounded-xl border border-cyan-300/25 bg-cyan-500/10 px-6 py-4 text-lg font-semibold shadow-[inset_0_1px_rgba(255,255,255,0.05)] backdrop-blur-xl transition hover:border-cyan-300/45 hover:bg-cyan-500/15 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 landscape:py-2.5 landscape:text-base'
 
 const secondaryButtonClass =
-  'rounded-xl border border-white/20 bg-white/10 px-6 py-4 text-lg font-semibold backdrop-blur-md transition hover:bg-white/20 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 landscape:py-2.5 landscape:text-base'
+  'rounded-xl border border-white/15 bg-[#07101d]/30 px-6 py-4 text-lg font-semibold shadow-[inset_0_1px_rgba(255,255,255,0.04)] backdrop-blur-xl transition hover:border-white/25 hover:bg-white/10 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 landscape:py-2.5 landscape:text-base'
 
 const MenuButtons = () => {
   const { user, loading, isAuthenticated } = useAuth()

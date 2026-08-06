@@ -4,13 +4,12 @@ import { FiArrowLeft, FiBox, FiCpu, FiShield, FiUsers, FiZap } from 'react-icons
 import { useAuth } from '../auth/authContext'
 import { useCommander } from '../commander/commanderContext'
 import { useShip } from '../ship/shipContext'
-import Scene from '../components/three/scene'
 
 const StatusBar = ({ label, current, maximum, icon: Icon }) => {
   const percentage = maximum > 0 ? Math.min((current / maximum) * 100, 100) : 0
 
   return (
-    <div className="rounded-xl border border-white/10 bg-black/25 p-4">
+    <div className="rounded-xl border border-white/10 bg-[#07101d]/30 p-4 shadow-[inset_0_1px_rgba(255,255,255,0.035)] backdrop-blur-xl">
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <Icon className="text-cyan-200" />
@@ -32,7 +31,7 @@ const StatusBar = ({ label, current, maximum, icon: Icon }) => {
 
 const ShipInfoCard = ({ label, value, icon: Icon }) => {
   return (
-    <div className="rounded-xl border border-white/10 bg-black/25 p-4">
+    <div className="rounded-xl border border-white/10 bg-[#07101d]/30 p-4 shadow-[inset_0_1px_rgba(255,255,255,0.035)] backdrop-blur-xl">
       <div className="flex items-center gap-3">
         <Icon className="shrink-0 text-cyan-200" />
 
@@ -76,13 +75,9 @@ const Ship = () => {
   }
 
   return (
-    <main className="relative h-dvh overflow-hidden bg-black text-white">
-      <div className="absolute inset-0">
-        <Scene />
-      </div>
-
-      <div className="absolute inset-0 bg-[#020712]/75" />
-      <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/45 to-transparent" />
+    <main className="relative h-dvh overflow-hidden text-white">
+      <div className="absolute inset-0 bg-[#020712]/35" />
+      <div className="absolute inset-0 bg-linear-to-r from-black/55 via-black/20 to-transparent" />
 
       <div className="relative z-10 flex h-full flex-col px-5 py-5 landscape:px-8 landscape:py-4">
         <header className="flex shrink-0 items-start justify-between gap-4">
@@ -97,7 +92,7 @@ const Ship = () => {
           </div>
 
           <button
-            className="flex shrink-0 items-center gap-2 rounded-lg border border-white/15 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.15em] text-white/60 backdrop-blur-md transition hover:bg-white/10 hover:text-white"
+            className="flex shrink-0 items-center gap-2 rounded-lg border border-white/15 bg-black/15 px-4 py-2 text-xs uppercase tracking-[0.15em] text-white/60 backdrop-blur-md transition hover:bg-white/10 hover:text-white"
             onClick={() => navigate('/game/station')}>
             <FiArrowLeft />
             Gateway
@@ -106,8 +101,8 @@ const Ship = () => {
 
         <div className="hide-scrollbar mt-5 min-h-0 flex-1 overflow-y-auto overscroll-contain pr-1 landscape:mt-4">
           <div className="grid gap-5 pb-2 landscape:grid-cols-[0.85fr_1.15fr] landscape:gap-8">
-            <section className="rounded-2xl border border-white/10 bg-[#07101d]/75 p-5 backdrop-blur-xl landscape:p-6">
-              <div className="flex min-h-52 items-center justify-center rounded-xl border border-cyan-400/15 bg-black/25 landscape:min-h-64">
+            <section className="rounded-2xl border border-cyan-200/12 bg-[#07101d]/35 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.3),inset_0_1px_rgba(255,255,255,0.04)] backdrop-blur-2xl landscape:p-6">
+              <div className="flex min-h-52 items-center justify-center rounded-xl border border-cyan-400/15 bg-black/12 landscape:min-h-64">
                 <div className="text-center">
                   <p className="text-5xl font-bold uppercase tracking-[0.18em] text-cyan-200/80">CSE</p>
 
