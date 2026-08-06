@@ -108,7 +108,12 @@ function StationHub() {
                 description="Inspect and manage your vessel"
                 onClick={() => navigate('/game/ship')}
               />
-              <StationServiceButton icon={FiCompass} title="Navigation" description="Review nearby systems and routes" disabled />
+              <StationServiceButton
+                icon={FiCompass}
+                title="Navigation"
+                description="Review nearby systems and routes"
+                onClick={() => navigate('/game/navigation')}
+              />
               <StationServiceButton icon={FiUser} title="Commander" description="View your commander profile" disabled />
               <StationServiceButton icon={FiSettings} title="Station Services" description="Repairs, fuel and administration" disabled />
             </section>
