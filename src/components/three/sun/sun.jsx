@@ -269,12 +269,12 @@ function Sun({ position = [0, 0, 0], radius = 14, intensity = 4000000, color = '
 
     const lensflare = new Lensflare()
 
-    lensflare.addElement(new LensflareElement(textures.core, 620, 0, new Color('#fff1bd')))
+    lensflare.addElement(new LensflareElement(textures.core, 460, 0, new Color('#fff1bd')))
     lensflare.addElement(new LensflareElement(textures.warmGhost, 90, 0.24, new Color('#ffd18c')))
     lensflare.addElement(new LensflareElement(textures.warmRing, 170, 0.42, new Color('#d59a62')))
     lensflare.addElement(new LensflareElement(textures.coolGhost, 48, 0.58, new Color('#9abaff')))
     lensflare.addElement(new LensflareElement(textures.warmGhost, 230, 0.72, new Color('#c88b55')))
-    lensflare.addElement(new LensflareElement(textures.coolRing, 340, 0.88, new Color('#7189b9')))
+    lensflare.addElement(new LensflareElement(textures.coolRing, 470, 0.88, new Color('#7189b9')))
     lensflare.addElement(new LensflareElement(textures.warmGhost, 62, 1, new Color('#ffd090')))
 
     light.add(lensflare)
@@ -316,7 +316,7 @@ function Sun({ position = [0, 0, 0], radius = 14, intensity = 4000000, color = '
       <sprite material={materials.core} scale={[radius * 4.2, radius * 4.2, 1]} />
 
       {/* Irregular starburst rays */}
-      <sprite ref={raySpriteRef} material={materials.rays} scale={[radius * 11, radius * 11, 1]} />
+      <sprite ref={raySpriteRef} material={materials.rays} scale={[radius * 15, radius * 15, 1]} />
 
       {/* Soft surrounding corona */}
       <sprite material={materials.corona} scale={[radius * 8, radius * 8, 1]} />
